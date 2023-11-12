@@ -1,7 +1,12 @@
-import "./App.css";
+import MainLayout from 'layouts/MainLayout/MainLayout';
+import AddressConnectionsPage from 'pages/AddressConnectionsPage/AddressConnectionsPage';
 
 function App() {
-  return <>Hello</>;
+  return (
+    <MainLayout>
+      <AddressConnectionsPage />
+    </MainLayout>
+  );
 }
 
 export default App;

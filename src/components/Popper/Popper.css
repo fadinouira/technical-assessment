@@ -1,0 +1,9 @@
+.popper-container {
+  position: relative;
+}
+
+.popper-content {
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0px 20px 45px var(--box-shadow-color);
+}
