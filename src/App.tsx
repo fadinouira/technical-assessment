@@ -1,5 +1,5 @@
 import MainLayout from 'layouts/MainLayout/MainLayout';
-import AddressConnectionsPage from './pages/AddressConnectionsPage/AddressConnectionsPage';
+import AddressConnectionsPage from 'pages/AddressConnectionsPage/AddressConnectionsPage';
 
 function App() {
   return (
