@@ -1,5 +1,5 @@
-export const joinPaths = (paths: string[]): string => {
-  let joinedPath = '/';
+export const joinPaths = (paths: string[], isCreatePath?: boolean): string => {
+  let joinedPath = isCreatePath ? '' : '/';
   for (const path of paths) {
     joinedPath += `${path}/`;
   }
