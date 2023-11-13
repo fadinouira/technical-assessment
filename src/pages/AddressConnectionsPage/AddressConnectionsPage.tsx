@@ -1,7 +1,9 @@
+import { getAllAddresses } from 'api/index';
 import { Card, Container, Typography } from 'components';
 import { GlobalVariables } from 'config/constants';
 
 function AddressConnectionsPage() {
+  getAllAddresses('');
   return (
     <Container maxWidth={GlobalVariables.BreakPoints.lg}>
       <Typography variant="h2">Technical assessment - Fadi NOUIRA</Typography>

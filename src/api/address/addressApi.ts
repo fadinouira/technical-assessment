@@ -9,8 +9,7 @@ export const getAllAddresses = async (searchText: string) => {
     outputFormat: 'RapidJSON',
     type_sf: 'any',
   };
-  const result = await fetch(
-    injectParams(joinPaths([CONFIG.BASE_URL_API, ENDPOINTS]), { ...params }),
-  );
-  console.log(result.json());
+  const AddressApiPath = joinPaths([CONFIG.BASE_URL_API, ENDPOINTS.address], true);
+  const result = await fetch(injectParams(AddressApiPath, { ...params }));
+  console.log(result);
 };

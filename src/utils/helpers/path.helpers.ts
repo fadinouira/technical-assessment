@@ -3,5 +3,6 @@ export const joinPaths = (paths: string[], isCreatePath?: boolean): string => {
   for (const path of paths) {
     joinedPath += `${path}/`;
   }
-  return joinedPath;
+
+  return joinedPath.slice(0, -1);
 };
