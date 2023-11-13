@@ -1,3 +1,4 @@
 import TextField from './TextField/TextField';
+import TextFieldSelector from './TextFieldSelector/TextFieldSelector';
 
-export { TextField };
+export { TextField, TextFieldSelector };

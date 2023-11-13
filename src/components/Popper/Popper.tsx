@@ -18,7 +18,7 @@ function Popper({ open, anchorEl, children, onClose }: PopperProps) {
           width: `${position.width}px`,
         }}
       >
-        {<Paper className="popper-trigger">{children}</Paper>}
+        <Paper>{children}</Paper>
       </div>,
       document.body,
     )
