@@ -1,3 +1,9 @@
+.text-field-list-options-style {
+  min-height: 50px;
+  max-height: 30vh;
+  overflow: auto;
+}
+
 .text-field-option-style {
   padding-inline: 8px;
   cursor: pointer;

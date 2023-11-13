@@ -1,1 +1,1 @@
-export * from './address/addressApi';
+export * from './address';

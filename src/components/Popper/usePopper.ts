@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 export default function usePopper(
   open: boolean,
-  onClose: () => void,
+  onClose?: () => void,
   anchorEl?: HTMLElement | null,
 ) {
   const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
@@ -14,18 +14,22 @@ export default function usePopper(
     }
   };
 
+  const handleClose = () => {
+    onClose?.();
+  };
+
   useEffect(() => {
     updatePosition();
     if (open) {
       window.addEventListener('resize', updatePosition);
-      document.getElementById('root')?.addEventListener('mousedown', onClose);
+      document.getElementById('root')?.addEventListener('mousedown', handleClose);
     } else {
       window.removeEventListener('resize', updatePosition);
     }
 
     return () => {
       window.removeEventListener('resize', updatePosition);
-      document.getElementById('root')?.removeEventListener('mousedown', onClose);
+      document.getElementById('root')?.removeEventListener('mousedown', handleClose);
     };
   }, [open, anchorEl]);
 

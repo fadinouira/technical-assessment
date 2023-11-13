@@ -3,6 +3,7 @@ import { SelectOption } from 'interfaces/index';
 export interface TextFieldSelectorProps {
   label?: string;
   placeholder?: string;
+  notFoundLabel?: string;
 
   initialSearchText?: string;
   textFieldValue?: string;

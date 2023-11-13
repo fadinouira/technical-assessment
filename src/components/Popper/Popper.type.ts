@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 export interface PopperProps {
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   anchorEl?: HTMLElement | null;
   children: ReactNode;
 }
