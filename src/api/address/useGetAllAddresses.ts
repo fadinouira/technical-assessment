@@ -10,5 +10,5 @@ export function useGetAllAddresses(searchText: string) {
     debouncedSearchText,
     getAllAddresses,
   );
-  return { data, isFetching, isLoading, error };
+  return { data: data?.locations, isFetching, isLoading, error };
 }
