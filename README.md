@@ -36,7 +36,13 @@ git clone https://github.com/fadinouira/technical-assessment
 cp .env.example .env
 ```
 
-3. Start the local development server
+3. Install the dependencies
+
+```bash
+yarn install
+```
+
+4. Start the local development server
 
 ```bash
 yarn start
