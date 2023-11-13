@@ -1,0 +1,17 @@
+.text-field-option-style {
+  padding-inline: 8px;
+  cursor: pointer;
+}
+
+.text-field-option-selected {
+  background-color: var(--grey-100);
+  color: var(--primary-color);
+}
+
+.text-field-option-style:not(:last-child) {
+  border-bottom: 1px solid var(--grey-300);
+}
+
+.text-field-option-style:hover {
+  color: var(--primary-color);
+}

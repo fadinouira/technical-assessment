@@ -1,4 +1,5 @@
 .paper-root-style {
   background-color: var(--background-paper);
+  border: 1px solid var(--grey-300);
   border-radius: 8px;
 }

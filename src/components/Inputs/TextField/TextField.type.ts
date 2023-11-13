@@ -5,6 +5,8 @@ export interface TextFieldProps {
   placeholder?: string;
   value?: string;
   className?: string;
+  disabled?: boolean;
+  error?: string;
   onClick?: () => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }

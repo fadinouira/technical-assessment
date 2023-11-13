@@ -3,7 +3,7 @@ import './TextField.css';
 import { TextFieldProps } from './TextField.type';
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ label, placeholder, className, value, onChange, onClick }, ref) => {
+  ({ label, placeholder, className, value, disabled, onChange, onClick }, ref) => {
     return (
       <div className={`text-field-root-style ${className}`} onClick={onClick}>
         {label && (
@@ -19,6 +19,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           className="text-field-input-style"
           value={value}
           onChange={onChange}
+          disabled={disabled}
         />
       </div>
     );
