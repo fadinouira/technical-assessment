@@ -1,63 +1,20 @@
-import { Loader, TextField } from 'components';
-import Popper from 'components/Popper/Popper';
-import { SelectOption } from 'interfaces/Input';
-import { ChangeEvent, useRef, useState } from 'react';
+import { Loader, NoDataFound, Popper, TextField } from 'components';
+import { GlobalVariables } from 'config/constants';
 import './TextFieldSelector.css';
 import { TextFieldSelectorProps } from './TextFieldSelector.type';
+import useTextFieldSelector from './useTextFieldSelector';
 
-function TextFieldSelector({
-  label,
-  placeholder,
-  initialSearchText,
-  textFieldValue,
-  clearOnSelect,
-  closeOnSelect,
-  isLoading,
-  options,
-  value,
-  disabled,
-  error,
-  onChange,
-  onChangeTextField,
-}: TextFieldSelectorProps) {
-  const [open, setOpen] = useState(false);
-  const [searchText, setSearchText] = useState(initialSearchText ?? '');
-
-  console.log(searchText);
-
-  const anchorRef = useRef<HTMLInputElement>(null);
-  const currentTextFieldValue = (textFieldValue ?? searchText) || (!open ? value?.label ?? '' : '');
-
-  const onSelect = (value: SelectOption<unknown>) => {
-    onChange(value);
-    if (closeOnSelect) {
-      handleClose();
-    }
-    if (clearOnSelect) {
-      onInputChange('');
-    }
-  };
-
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
-    onInputChange(inputValue);
-  };
-
-  const onInputChange = (value: string) => {
-    if (onChangeTextField) {
-      onChangeTextField(value);
-    } else {
-      setSearchText(value);
-    }
-  };
-
-  const handleTextFieldClick = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+function TextFieldSelector(props: TextFieldSelectorProps) {
+  const { label, placeholder, notFoundLabel, isLoading, options, value, disabled, error } = props;
+  const {
+    anchorRef,
+    currentTextFieldValue,
+    isOpen,
+    handleInputChange,
+    closeDialog,
+    openDialog,
+    onSelect,
+  } = useTextFieldSelector(props);
 
   return (
     <div>
@@ -67,22 +24,26 @@ function TextFieldSelector({
         placeholder={placeholder}
         value={currentTextFieldValue}
         onChange={handleInputChange}
-        onClick={handleTextFieldClick}
+        onBlur={closeDialog}
+        onFocus={openDialog}
         disabled={disabled}
         error={error}
       />
-      <Popper open={open} anchorEl={anchorRef.current} onClose={handleClose}>
+      <Popper open={isOpen} anchorEl={anchorRef.current}>
         {isLoading ? (
           <Loader minHeight={50} size={3} />
         ) : (
-          <div>
+          <div className="text-field-list-options-style">
+            {options.length === GlobalVariables.NoDataLength && (
+              <NoDataFound message={notFoundLabel ?? 'No options found'} />
+            )}
             {options.map((option) => (
               <div
                 key={option.label}
                 className={`text-field-option-style ${
                   option.value === value?.value ? 'text-field-option-selected' : ''
                 }`}
-                onClick={() => onSelect(option)}
+                onMouseDown={() => onSelect(option)}
               >
                 {option.label}
               </div>

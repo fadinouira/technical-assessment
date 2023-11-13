@@ -1,4 +1,5 @@
 export const GlobalVariables = {
+  NoDataLength: 0,
   DebounceTime: {
     medium: 500,
   },
